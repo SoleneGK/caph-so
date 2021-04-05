@@ -1,5 +1,6 @@
 sonata_admin:
-    title: 'Sonata Admin'
+    title: 'Capharnaum'
+    # title_logo: /images/logos/logo_sonata.png
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }

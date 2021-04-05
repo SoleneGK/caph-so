@@ -20,7 +20,7 @@ final class Version20210405195309 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql("INSERT INTO user(email, roles, password) VALUES ('solene.garda.krebs@gmail.com', '[\"ROLE_ADMIN\1]', '\$argon2id\$v=19\$m=65536,t=4,p=1\$U2NoVlJDeGtYdkQ1MVQzZQ\$K9QMU7AocYwr+Qftq7P7RF/gICbNIQiRBtOkoLy6jAw')");
+        $this->addSql("INSERT INTO user(email, roles, password) VALUES ('solene.garda.krebs@gmail.com', '[\"ROLE_ADMIN\"]', '\$argon2id\$v=19\$m=65536,t=4,p=1\$YzFxc1NCUm9LUzNqSHpuMQ$9u2YoNU8gLLnY6AktiQi1E/IQeu2+0bp/you5AQO2K0')");
     }
 
     public function down(Schema $schema) : void
