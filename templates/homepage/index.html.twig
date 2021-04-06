@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomepageController!{% endblock %}
+
+{% block body %}
+<main>
+    {% if articles %}
+        {% for article in articles %}
+            <article>
+                <h2><a href="{{ path('display_article', {slug: article.slug}) }}">{{ article.title }}</a></h2>
+                <p class="article-details">Publié le {{ article.publicationDate|date("d/m/Y") }}</p>
+                <p class="article-extract">{{ article.content|slice(0, 200) }}… <a href="{{ path('display_article', {slug: article.slug}) }}">Lire la suite</a></p>
+            </article>
+        {% endfor %}
+    {% else %}
+        Il n'y a aucun article pour le moment mais je travaille dessus !
+    {% endif %}
+</main>
+{% endblock %}

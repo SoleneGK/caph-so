@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<main>
+    <h2>{{ article.title }}</h2>
+    <p class="article-details">Publié le {{ article.publicationDate|date("d/m/Y") }}</p>
+    <p>{{ article.content }}</p>
+</main>
+{% endblock %}

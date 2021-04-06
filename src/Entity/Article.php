@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\Index;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @Table(indexes={@Index(name="search_slug", columns={"slug"})})
  */
 class Article
 {
@@ -24,7 +27,7 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $publication_date;
 
@@ -56,12 +59,12 @@ class Article
         return $this;
     }
 
-    public function getPublicationDate(): ?\DateTimeImmutable
+    public function getPublicationDate(): ?\DateTime
     {
         return $this->publication_date;
     }
 
-    public function setPublicationDate(\DateTimeImmutable $publication_date): self
+    public function setPublicationDate(\DateTime $publication_date): self
     {
         $this->publication_date = $publication_date;
 
