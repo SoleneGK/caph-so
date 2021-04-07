@@ -5,16 +5,24 @@
         <title>{% block title %}Le Capharnaüm de Solen{% endblock %}</title>
 
         {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         {% endblock %}
+
+        <!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+
 
         {% block javascripts %}
         {% endblock %}
     </head>
     <body>
-        <header>
-            <h1><a href="{{ path('homepage') }}">Le Capharnaüm de Solen</a></h1>
-        </header>
+        <div class="content">
+            <header>
+                <h1><a href="{{ path('homepage') }}">Le Capharnaüm de Solen</a></h1>
+            </header>
 
-        {% block body %}{% endblock %}
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
-
 {% block body %}
 <main>
+    <p class="presentation">
+        Ça y est, ce blog est enfin en ligne ! Comme vous pouvez le constater, il est extrêmement minimaliste. Le but est de l'alimenter régulièrement, aussi bien en code qu'en articles. Si vous avez des commentaires, remarques, critiques, conseils… contactez-moi directement ou en envoyant un mail à contact at caph-so.fr.<br>
+        Bonne lecture !
+    </p>
+
     {% if articles %}
         {% for article in articles %}
             <article>
