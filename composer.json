@@ -9,6 +9,7 @@
         "doctrine/doctrine-bundle": "^2.3",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
+        "erusev/parsedown": "^1.7",
         "gedmo/doctrine-extensions": "^3.0",
         "sonata-project/admin-bundle": "^3.95",
         "sonata-project/doctrine-orm-admin-bundle": "^3.32",
@@ -19,9 +20,12 @@
         "symfony/framework-bundle": "4.4.*",
         "symfony/proxy-manager-bridge": "4.4.*",
         "symfony/security-bundle": "4.4.*",
-        "symfony/yaml": "4.4.*"
+        "symfony/yaml": "4.4.*",
+        "twig/extra-bundle": "^3.3",
+        "twig/markdown-extra": "^3.3"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "symfony/maker-bundle": "^1.30"
     },
     "config": {
