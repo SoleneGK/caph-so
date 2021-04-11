@@ -3,6 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Le Capharnaüm de Solen{% endblock %}</title>
+        {% block meta %}
+            {% block meta_description %}
+                <meta name="description" content="Je parle de tout ce qui m'intéresse" />
+            {% endblock %}
+
+            <meta name="robots" content="index, follow" />
+        {% endblock %}
 
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -11,7 +18,6 @@
         <!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
-
 
         {% block javascripts %}
         {% endblock %}

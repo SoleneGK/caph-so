@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block meta_description %}
+<meta name="description" content="{{ article.content|slice(0, 160) }}">
+{% endblock %}
+
 {% block body %}
 <main>
     <h2>{{ article.title }}</h2>
