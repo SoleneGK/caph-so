@@ -8,12 +8,14 @@ use Doctrine\Persistence\ObjectManager;
 
 class ArticleFixtures extends Fixture
 {
+    public const ARTICLE1 = 'article1';
+
     public function load(ObjectManager $manager)
     {
         $article = new Article();
         $article
             ->setTitle('Lorem')
-            ->setPublicationDate(new \DateTime)
+            ->setPublicationDate(new \DateTime('2021-01-15'))
             ->setContent('Vivamus convallis lobortis metus. *Ut porta tristique ultricies*.
 
 Interdum et malesuada fames ac ante ipsum primis in faucibus. 
@@ -26,5 +28,7 @@ Etiam vitae condimentum lectus. Suspendisse scelerisque at diam interdum sollici
         
         $manager->persist($article);
         $manager->flush();
+
+        $this->addReference(self::ARTICLE1, $article);
     }
 }
