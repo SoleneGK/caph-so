@@ -46,6 +46,7 @@ class Article
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="article", orphanRemoval=true)
+     * @ORM\OrderBy({"publicationDate" = "ASC"})
      */
     private $comments;
 

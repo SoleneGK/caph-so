@@ -6,8 +6,31 @@
 
 {% block body %}
 <main>
-    <h2>{{ article.title }}</h2>
-    <p class="article-details">Publié le {{ article.publicationDate|date("d/m/Y") }}</p>
-    <p>{{ article.content|markdown_to_html }}</p>
+    <article>
+        <h2>{{ article.title }}</h2>
+        <p class="article-details">Publié le {{ article.publicationDate|date("d/m/Y") }}</p>
+        <p>{{ article.content|markdown_to_html }}</p>
+    </article>
+
+    <hr>
+
+    <section>
+        {% if article.comments %}
+            {% for comment in article.comments|filter(c => c.validated == true) %}
+                <div class="comment">
+                    <p class="comment-data">{{ comment.authorPseudo }}, le {{ comment.publicationDate|format_date("long") }}</p>
+                    <p class="comment-content">{{ comment.content }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Il n'y a pas encore de commentaires. Vous avez quelque chose à dire ?</p>
+        {% endif %}
+
+        <hr>
+
+
+    </section>
+
+
 </main>
 {% endblock %}
