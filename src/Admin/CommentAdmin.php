@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -17,6 +18,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class CommentAdmin extends AbstractAdmin
 {
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('validate', $this->getRouterIdParameter().'/validate');
+    }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
@@ -64,6 +69,9 @@ final class CommentAdmin extends AbstractAdmin
             ])
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
+                    'validate' => [
+                        'template' => 'admin/CRUD/list__action_validate.html.twig',
+                    ],
                     'show' => [],
                     'edit' => [],
                     'delete' => [],
@@ -99,7 +107,7 @@ final class CommentAdmin extends AbstractAdmin
             ])
             ->add('validated', CheckboxType::class, [
                 'label' => 'Validé',
-                'required' => true,
+                'required' => false,
             ])
         ;
     }
@@ -107,25 +115,25 @@ final class CommentAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-        ->add('article.title', null, [
-            'label' => 'Article',
-        ])
-        ->add('publicationDate', null, [
-            'label' => 'Publié le',
-        ])
-        ->add('authorPseudo', null, [
-            'label' => 'Pseudo',
-        ])
-        ->add('authorEmail', null, [
-            'label' => 'Email',
-        ])
-        ->add('content', null, [
-            'label' => 'Contenu',
-        ])
-        ->add('validated', null, [
-            'label' => 'Validé',
-        ])
-    ;
+            ->add('article.title', null, [
+                'label' => 'Article',
+            ])
+            ->add('publicationDate', null, [
+                'label' => 'Publié le',
+            ])
+            ->add('authorPseudo', null, [
+                'label' => 'Pseudo',
+            ])
+            ->add('authorEmail', null, [
+                'label' => 'Email',
+            ])
+            ->add('content', null, [
+                'label' => 'Contenu',
+            ])
+            ->add('validated', null, [
+                'label' => 'Validé',
+            ])
+        ;
     }
 
     public function toString($object)
