@@ -19,7 +19,7 @@ final class ArticleAdmin extends AbstractAdmin
                 'label' => 'Titre',
                 'required' => true,
             ])
-            ->add('publication_date', DateTimeType::class, [
+            ->add('publicationDate', DateTimeType::class, [
                 'label' => 'Date de publication',
                 'required' => true,
                 'widget' => 'single_text',
@@ -38,7 +38,7 @@ final class ArticleAdmin extends AbstractAdmin
             ->add('title', null, [
                 'label' => 'Titre',
             ])
-            ->add('publication_date', null, [
+            ->add('publicationDate', null, [
                 'label' => 'Date de publication',
             ])
         ;
@@ -50,7 +50,7 @@ final class ArticleAdmin extends AbstractAdmin
             ->addIdentifier('title', null, [
                 'label' => 'Titre',
             ])
-            ->add('publication_date', null, [
+            ->add('publicationDate', null, [
                 'label' => 'Date de publication',
             ])
             ->add(ListMapper::NAME_ACTIONS, null, [
