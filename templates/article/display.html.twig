@@ -15,7 +15,7 @@
     <section>
         <div class="display-comments">
             <h2>Commentaires</h2>
-            {% if article.comments %}
+            {% if article.comments|filter(c => c.validated == true) is not empty %}
                 {% for comment in article.comments|filter(c => c.validated == true) %}
                     <div class="comment" id="comment{{ comment.id }}">
                         <p class="comment-data"><span class="bold">{{ comment.authorPseudo }}</span>, le {{ comment.publicationDate|format_datetime(pattern="d MMMM yyyy à k:mm") }}</p>
