@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,11 +20,12 @@ final class ArticleAdmin extends AbstractAdmin
                 'label' => 'Titre',
                 'required' => true,
             ])
-            ->add('publication_date', DateTimeType::class, [
+            ->add('publicationDate', DateTimeType::class, [
                 'label' => 'Date de publication',
                 'required' => true,
                 'widget' => 'single_text',
-                'data' => new \DateTime('now')
+                'data' => new \DateTime('now'),
+                'format' => 'd/m/Y',
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu',
@@ -38,7 +40,7 @@ final class ArticleAdmin extends AbstractAdmin
             ->add('title', null, [
                 'label' => 'Titre',
             ])
-            ->add('publication_date', null, [
+            ->add('publicationDate', null, [
                 'label' => 'Date de publication',
             ])
         ;
@@ -49,9 +51,13 @@ final class ArticleAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('title', null, [
                 'label' => 'Titre',
+                'route' => [
+					'name' => 'show',
+				],
             ])
-            ->add('publication_date', null, [
+            ->add('publicationDate', null, [
                 'label' => 'Date de publication',
+                'format' => 'd F Y h:i',
             ])
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
@@ -60,6 +66,32 @@ final class ArticleAdmin extends AbstractAdmin
                     'delete' => [],
                 ],
             ])
+        ;
+    }
+
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->with('Article')
+                ->add('title', null, [
+                    'label' => 'Titre',
+                ])
+                ->add('publicationDate', null, [
+                    'label' => 'Publié le',
+                    'format' => 'd F Y h:i',
+                ])
+                ->add('Voir sur le site', null, [
+                    'template' => 'admin/article/show_link.html.twig',
+                ])
+                ->add('content', null, [
+                    'label' => '',
+                ])
+            ->end()
+            ->with('Commentaires')
+                ->add('', null, [
+                    'template' => 'admin/article/show_comment.html.twig',
+                ])
+            ->end()
         ;
     }
 

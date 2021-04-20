@@ -36,3 +36,12 @@ services:
         arguments: [~, App\Entity\Article, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Article, label: Article }
+
+    admin.comment:
+        class: App\Admin\CommentAdmin
+        arguments:
+            - ~
+            - App\Entity\Comment
+            - App\Controller\Admin\CommentAdminController
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Article, label: Comment }

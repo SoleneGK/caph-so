@@ -1,0 +1,6 @@
+{% extends "@SonataAdmin/CRUD/base_show_field.html.twig" %}
+
+{% block field %}
+	{% set url = path('display_article', {slug: object.slug}) %}
+	<a href="{{ url }}">{{ url }}</a>
+{% endblock %}

@@ -5,6 +5,11 @@
 	--main-content-color: #7acff0;
 }
 
+*
+{
+	box-sizing: border-box;
+}
+
 html,
 body
 {
@@ -33,7 +38,8 @@ header
 }
 
 h1,
-h2
+h2,
+h3
 {
 	color: var(--main-title-color);
 	font-family: 'Cinzel', serif;
@@ -68,4 +74,66 @@ p.presentation
 	padding-top: 10px;
 	border-bottom: 1px dashed var(--main-title-color);
 	border-top: 1px dashed var(--main-title-color);
+}
+
+article,
+.display-comments
+{
+	border-bottom: 1px solid var(--main-title-color);
+	margin-bottom: 30px;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.comment-data
+{
+	margin-bottom: 5px;
+}
+
+.comment-content
+{
+	margin-top: 5px;
+	padding-left: 5px;
+}
+
+.new-comment textarea
+{
+	width: 100%;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	height: 160px;
+}
+
+.new-comment input
+{
+	margin-bottom: 10px;
+	width: 100%;
+	line-height: 24px;
+	border-radius: 5px;
+}
+
+.new-comment *[type="submit"]
+{
+	background-color: #1890bf;
+	color: white;
+	cursor: pointer;
+	padding: .5em 1em;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	border: none;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.text-center
+{
+	text-align: center;
+}
+
+.smaller-text
+{
+	font-size: .9em;
 }

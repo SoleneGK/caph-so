@@ -1,0 +1,29 @@
+{% extends "@SonataAdmin/CRUD/base_show_field.html.twig" %}
+
+{% block field %}
+	{% for comment in object.comments %}
+		<div>
+			<p>
+				{{ comment.authorPseudo }}
+				{% if comment.authorEmail %}
+					({{ comment.authorEmail }})
+				{% endif %}
+				<br>
+				Le {{ comment.publicationDate|format_datetime(pattern="d MMMM yyyy à k:mm") }}
+			</p>
+			<p style="margin-left: 10px">
+			{{ comment.content }}
+			</p>
+			<p>
+			{% if comment.validated %}
+                <span class="label label-success">oui</span>
+			{% else %}
+				<span class="label label-danger">non</span>
+				<a href="{{ path('admin_app_comment_validate', {id: comment.id}) }}" class="btn btn-sm btn-default view_link">Valider</a>
+			{% endif %}
+				<a href="{{ path('admin_app_comment_edit', {id: comment.id}) }}" class="btn btn-sm btn-default view_link">Éditer</a>
+			</p>
+		</div>
+		<hr>
+	{% endfor %}
+{% endblock %}

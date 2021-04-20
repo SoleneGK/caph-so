@@ -31,7 +31,7 @@ class Article
     /**
      * @ORM\Column(type="datetime")
      */
-    private $publication_date;
+    private $publicationDate;
 
     /**
      * @ORM\Column(type="text")
@@ -46,6 +46,7 @@ class Article
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="article", orphanRemoval=true)
+     * @ORM\OrderBy({"publicationDate" = "ASC"})
      */
     private $comments;
 
@@ -73,12 +74,12 @@ class Article
 
     public function getPublicationDate(): ?\DateTime
     {
-        return $this->publication_date;
+        return $this->publicationDate;
     }
 
-    public function setPublicationDate(\DateTime $publication_date): self
+    public function setPublicationDate(\DateTime $publicationDate): self
     {
-        $this->publication_date = $publication_date;
+        $this->publicationDate = $publicationDate;
 
         return $this;
     }

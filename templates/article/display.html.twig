@@ -6,8 +6,47 @@
 
 {% block body %}
 <main>
-    <h2>{{ article.title }}</h2>
-    <p class="article-details">Publié le {{ article.publicationDate|date("d/m/Y") }}</p>
-    <p>{{ article.content|markdown_to_html }}</p>
+    <article>
+        <h2>{{ article.title }}</h2>
+        <p class="article-details">Publié le {{ article.publicationDate|date("d/m/Y") }}</p>
+        <p>{{ article.content|markdown_to_html }}</p>
+    </article>
+
+    <section>
+        <div class="display-comments">
+            <h2>Commentaires</h2>
+            {% if article.comments %}
+                {% for comment in article.comments|filter(c => c.validated == true) %}
+                    <div class="comment" id="comment{{ comment.id }}">
+                        <p class="comment-data"><span class="bold">{{ comment.authorPseudo }}</span>, le {{ comment.publicationDate|format_datetime(pattern="d MMMM yyyy à k:mm") }}</p>
+                        <p class="comment-content">{{ comment.content }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Il n'y a pas encore de commentaire. Vous avez quelque chose à dire ?</p>
+            {% endif %}
+        </div>
+
+        <div class="new-comment">
+            <h3>Poster un commentaire</h3>
+            <p class="smaller-text">Les commentaires sont validés manuellement avant d'être affichés, donc ne vous inquiétez pas si votre commentaire n'apparaît pas tout de suite. Je suis un être humain (il parait).</p>
+            <div>
+                {{ form_label(form.authorPseudo) }}<br>
+                {{ form_widget(form.authorPseudo) }}
+            </div>
+            <div>
+                {{ form_label(form.authorEmail) }}<br>
+                {{ form_widget(form.authorEmail) }}
+            </div>
+            <div>
+                {{ form_widget(form.content) }}
+            </div>
+            <div class="text-center">
+                {{ form_widget(form.send) }}
+            </div>
+        </div>
+    </section>
+
+
 </main>
 {% endblock %}

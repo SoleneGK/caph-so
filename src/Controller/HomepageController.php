@@ -16,7 +16,7 @@ class HomepageController extends AbstractController
     {
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
-            ->findAll([], ['publication_date' => 'DESC']);
+            ->findAll([], ['publicationDate' => 'DESC']);
 
         return $this->render('homepage/index.html.twig', [
             'articles' => $articles,
