@@ -36,8 +36,6 @@ services:
         arguments: [~, App\Entity\Article, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Article, label: Article }
-        calls:
-            - [ setTemplate, [show, 'admin/article/show.html.twig']]
 
     admin.comment:
         class: App\Admin\CommentAdmin

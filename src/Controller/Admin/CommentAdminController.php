@@ -20,6 +20,7 @@ final class CommentAdminController extends CRUDController
 		$comment->setValidated(true);
 		$this->admin->update($comment);
 
-		return new RedirectResponse($this->admin->generateUrl('list'));
+		$refererUrl = $this->getRequest()->headers->get('referer');
+		return $this->redirect($refererUrl);
 	}
 }
